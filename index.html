@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎥</text></svg>" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Marc Beiersdorf - Director & Cinematographer" />
+  <title>Marc Beiersdorf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="home-page-bg">
+
+
+  <nav class="minimal-nav">
+    <a href="./index.html" class="logo">Marc Beiersdorf</a>
+    <ul class="nav-links">
+      <li><a href="./work.html">Work</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="scroll-sequence">
+    <div class="sticky-container">
+      <div class="hero-overlay-text"></div>
+
+      <!-- Video 1 (Base Layer) -->
+      <div class="video-layer hero-clickable active-layer" id="video-1" data-vimeo-id="1188948725" style="background: #111; cursor: pointer;">
+        <h2 class="hero-title">MystxMusti</h2>
+        <!-- Placeholder for your uploaded poster -->
+        <img id="vimeo-poster-1" src="./poster-1.png"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; transition: opacity 0.8s ease;"
+          alt="Video 1 Poster">
+        <iframe id="vimeo-player-1" class="vimeo-cover"
+          src="https://player.vimeo.com/video/1184051921?background=1&autoplay=1&loop=1&byline=0&title=0&autopause=0"
+          frameborder="0" allow="autoplay; fullscreen"></iframe>
+      </div>
+      <!-- Video 2 -->
+      <div class="video-layer hero-clickable" id="video-2" data-vimeo-id="1188950069" style="background: #111; cursor: pointer;">
+        <h2 class="hero-title">Sports AD</h2>
+        <!-- Placeholder for your uploaded poster -->
+        <img id="vimeo-poster-2" src="./poster-2.png"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; transition: opacity 0.8s ease;"
+          alt="Video 2 Poster">
+        <iframe id="vimeo-player-2" class="vimeo-cover"
+          src="https://player.vimeo.com/video/1184041469?background=1&autoplay=1&loop=1&byline=0&title=0&autopause=0"
+          frameborder="0" allow="autoplay; fullscreen"></iframe>
+      </div>
+      <!-- Video 3 -->
+      <div class="video-layer hero-clickable" id="video-3" data-vimeo-id="1188955973" style="background: #111; cursor: pointer;">
+        <h2 class="hero-title">Social AD</h2>
+        <!-- Placeholder for your uploaded poster -->
+        <img id="vimeo-poster-3" src="./poster-3.png"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; transition: opacity 0.8s ease;"
+          alt="Video 3 Poster">
+        <iframe id="vimeo-player-3" class="vimeo-cover"
+          src="https://player.vimeo.com/video/1184058729?background=1&autoplay=1&loop=1&byline=0&title=0&autopause=0"
+          frameborder="0" allow="autoplay; fullscreen"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="work-section gevirtz-grid">
+    <div class="flex-accordion-gallery">
+      <!-- Item 1: Sports -->
+      <div class="portfolio-item hover-reveal sports-trigger" style="cursor: pointer;">
+        <video class="portfolio-video" loop muted playsinline
+          poster="./Phili_1.275.1.png">
+          <source src="https://cdn.pixabay.com/video/2016/11/01/6216-190117498_large.mp4" type="video/mp4">
+        </video>
+        <div class="item-meta-overlay">
+          <h3 class="meta-vertical">Sports</h3>
+          <h3 class="meta-horizontal">Sports</h3>
+        </div>
+      </div>
+      <!-- Item 2: Fashion/Brands -->
+      <div class="portfolio-item hover-reveal fashion-trigger" style="cursor: pointer;">
+        <video class="portfolio-video" loop muted playsinline
+          poster="./Fashion_3.3.1.png">
+          <source src="https://cdn.pixabay.com/vimeo/328940142/nature-22530.mp4?width=1280" type="video/mp4">
+        </video>
+        <div class="item-meta-overlay">
+          <h3 class="meta-vertical">Fashion/Brands</h3>
+          <h3 class="meta-horizontal">Fashion/Brands</h3>
+        </div>
+      </div>
+      <!-- Item 3: Events -->
+      <div class="portfolio-item hover-reveal events-trigger" style="cursor: pointer;">
+        <video class="portfolio-video" loop muted playsinline
+          poster="./event.png">
+          <source src="https://cdn.pixabay.com/video/2016/11/01/6216-190117498_large.mp4" type="video/mp4">
+        </video>
+        <div class="item-meta-overlay">
+          <h3 class="meta-vertical">Events</h3>
+          <h3 class="meta-horizontal">Events</h3>
+        </div>
+      </div>
+      <!-- Item 4: Cinematic Shorts -->
+      <div class="portfolio-item hover-reveal shorts-trigger" style="cursor: pointer;">
+        <video class="portfolio-video" loop muted playsinline
+          poster="./Background_2.jpg">
+          <source src="https://cdn.pixabay.com/video/2016/11/01/6216-190117498_large.mp4" type="video/mp4">
+        </video>
+        <div class="item-meta-overlay">
+          <h3 class="meta-vertical">Cinematic Shorts</h3>
+          <h3 class="meta-horizontal">Cinematic Shorts</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Lightbox Modal -->
+  <div class="video-lightbox" id="videoLightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <div class="lightbox-content">
+      <iframe id="lightboxIframe" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Sports Collection Lightbox -->
+  <div class="collection-lightbox sports-collection" id="sportsCollectionLightbox">
+    <button class="lightbox-close" id="sportsCollectionClose">✕</button>
+    <div class="collection-header">
+      <h2>Sports</h2>
+    </div>
+    <div class="sports-grid">
+      <!-- Left column: two horizontal videos stacked -->
+      <div class="sports-col-left">
+        <div class="sports-item" data-vimeo-id="1188955493" data-loop-src="https://player.vimeo.com/video/1188955493?background=1&autoplay=1&loop=1">
+          <img class="sports-poster" src="https://i.vimeocdn.com/video/2154744098-dcf2119ff5cf2be010b0415b1692bb3de2f6537d0b2315992974f9644c261a68-d_1280?region=us" alt="NICE">
+          <iframe class="sports-iframe" frameborder="0" allow="autoplay; fullscreen"></iframe>
+          <div class="sports-overlay"><h3>NICE</h3></div>
+        </div>
+        <div class="sports-item" data-vimeo-id="1188950069" data-loop-src="https://player.vimeo.com/video/1184041469?background=1&autoplay=1&loop=1">
+          <img class="sports-poster" src="https://i.vimeocdn.com/video/2154741488-0cab58a04ad9c7d97d1443c280d29e33c81ca025245302e85b42d1aa0be17de5-d_1280?region=us" alt="Sports AD">
+          <iframe class="sports-iframe" frameborder="0" allow="autoplay; fullscreen"></iframe>
+          <div class="sports-overlay"><h3>Sports AD</h3></div>
+        </div>
+      </div>
+      <!-- Right column: one vertical video -->
+      <div class="sports-col-right">
+        <div class="sports-item" data-vimeo-id="1188953454" data-loop-src="https://player.vimeo.com/video/1188953454?background=1&autoplay=1&loop=1">
+          <img class="sports-poster" src="https://i.vimeocdn.com/video/2154743115-15aedbe7edf69f27ec61748a41d53357fe271e65db14d85111f0c26b85fb523f-d_1280?region=us" alt="Mapletics">
+          <iframe class="sports-iframe" frameborder="0" allow="autoplay; fullscreen"></iframe>
+          <div class="sports-overlay"><h3>Mapletics</h3></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fashion Collection Lightbox -->
+  <div class="collection-lightbox fashion-collection" id="fashionCollectionLightbox">
+    <button class="lightbox-close" id="fashionCollectionClose">✕</button>
+    <div class="collection-header">
+      <h2>Fashion / Brands</h2>
+    </div>
+    <div class="sports-grid">
+      <!-- Left column: MystxMusti (horizontal) + Olakala (vertical) -->
+      <div class="sports-col-left">
+        <div class="sports-item" data-vimeo-id="1188948725">
+          <img class="sports-poster" src="https://i.vimeocdn.com/video/2154739299-956538683c4f97b6618d3ae6a66a6d3f9151d8f1971b107ce40943e2258c779c-d_1280?region=us" alt="MystxMusti">
+          <div class="sports-overlay"><h3>MystxMusti</h3></div>
+        </div>
+        <div class="sports-item" data-vimeo-id="1188954014">
+          <img class="sports-poster" src="https://i.vimeocdn.com/video/2153341778-a97fdcd587e037f621594125bd9baf9c3746e62c5778c1c3b07d53153d43d299-d_1280?region=us" alt="Olakala">
+          <div class="sports-overlay"><h3>Olakala</h3></div>
+        </div>
+      </div>
+      <!-- Right column: Juwelmania (vertical) -->
+      <div class="sports-col-right">
+        <div class="sports-item juwelmania-sub-trigger" data-vimeo-id="1187985676">
+          <img class="sports-poster" src="https://i.vimeocdn.com/video/2152124993-d0d2d0230a61e6b2f4fda1997ab2f378d48e9c1aefb66fa399798ae76e82a615-d_1280?region=us" alt="Juwelmania">
+          <div class="sports-overlay"><h3>Juwelmania</h3></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Events Collection Lightbox -->
+  <div class="collection-lightbox events-collection" id="eventsCollectionLightbox">
+    <button class="lightbox-close" id="eventsCollectionClose">✕</button>
+    <div class="collection-header">
+      <h2>Events</h2>
+    </div>
+    <div class="sports-grid events-grid">
+      <!-- JTI Festival on top (spans columns 1 to 8) -->
+      <div class="sports-item event-item-top" data-vimeo-id="1185099176" data-loop-src="https://player.vimeo.com/video/1185099176?background=1&autoplay=1&loop=1">
+        <img class="sports-poster" src="https://i.vimeocdn.com/video/2154740864-2ab41f7a31b2e8d3d71b06e0a8730c5b3061ea065fdf6cfc12ebd74d43265b6f-d_1280?region=us" alt="JTI Festival">
+        <iframe class="sports-iframe" frameborder="0" allow="autoplay; fullscreen"></iframe>
+        <div class="sports-overlay"><h3>JTI Festival</h3></div>
+      </div>
+      <!-- FC 50plus1 on bottom (spans columns 5 to 12) -->
+      <div class="sports-item event-item-bottom" data-vimeo-id="1185106160" data-loop-src="https://player.vimeo.com/video/1185106160?background=1&autoplay=1&loop=1">
+        <img class="sports-poster" src="https://i.vimeocdn.com/video/2154740237-a080f63a9b06a09ae6fe6ef708ad3dd5d26dede8fd39c927bea19fe9c313e3ed-d_1280?region=us" alt="FC 50plus1">
+        <iframe class="sports-iframe" frameborder="0" allow="autoplay; fullscreen"></iframe>
+        <div class="sports-overlay"><h3>FC 50plus1</h3></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cinematic Shorts Collection Lightbox -->
+  <div class="collection-lightbox shorts-collection" id="shortsCollectionLightbox">
+    <button class="lightbox-close" id="shortsCollectionClose">✕</button>
+    <div class="collection-header">
+      <h2>Cinematic Shorts</h2>
+    </div>
+    <div class="shorts-grid">
+      <!-- Left column: RedStudio (horizontal) -->
+      <div class="shorts-col-left">
+        <div class="sports-item" data-vimeo-id="1185097605" data-loop-src="https://player.vimeo.com/video/1185097605?background=1&autoplay=1&loop=1">
+          <img class="sports-poster" src="https://i.vimeocdn.com/video/2154738763-8f46c797f029f232c1726f0e76745c5319f9cf3bd0f80668a4b26ae3c0a0280c-d_1280?region=us" alt="RedStudio">
+          <iframe class="sports-iframe" frameborder="0" allow="autoplay; fullscreen"></iframe>
+          <div class="sports-overlay"><h3>RedStudio</h3></div>
+        </div>
+      </div>
+      <!-- Right column: When the wind speaks (vertical) -->
+      <div class="shorts-col-right">
+        <div class="sports-item" data-vimeo-id="1188954344" data-loop-src="https://player.vimeo.com/video/1188954344?background=1&autoplay=1&loop=1">
+          <img class="sports-poster" src="https://i.vimeocdn.com/video/2154743718-45b5caf66f37e03035a94b526331cdbc5901c384049ae73701d07a9d2fa2c769-d_1280?region=us" alt="When the wind speaks">
+          <iframe class="sports-iframe" frameborder="0" allow="autoplay; fullscreen"></iframe>
+          <div class="sports-overlay"><h3>When the wind speaks</h3></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Juwelmania Collection Lightbox (for Fashion sub-page) -->
+  <div class="collection-lightbox juwelmania-collection" id="juwelmaniaSublightbox">
+    <button class="lightbox-close" id="juwelmaniaSubClose">✕</button>
+    <div class="collection-header">
+      <h2>Juwelmania</h2>
+    </div>
+    <div class="collection-grid">
+      <div class="collection-item" data-vimeo-id="1187985676">
+        <iframe data-src="https://player.vimeo.com/video/1187985676?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen"></iframe>
+      </div>
+      <div class="collection-item" data-vimeo-id="1187985411">
+        <iframe data-src="https://player.vimeo.com/video/1187985411?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen"></iframe>
+      </div>
+      <div class="collection-item" data-vimeo-id="1187984910">
+        <iframe data-src="https://player.vimeo.com/video/1187984910?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen"></iframe>
+      </div>
+      <div class="collection-item" data-vimeo-id="1187984435">
+        <iframe data-src="https://player.vimeo.com/video/1187984435?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen"></iframe>
+      </div>
+    </div>
+  </div>
+
+
+  <footer id="contact" class="minimal-footer">
+    <a href="mailto:marcbeiersdorf.av@gmail.com" class="email-link">marcbeiersdorf.av@gmail.com</a>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+
+</html>

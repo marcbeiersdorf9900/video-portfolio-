@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎥</text></svg>" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Marc Beiersdorf - Contact & About" />
+  <title>Contact | Marc Beiersdorf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="contact-page-bg">
+
+  <!-- Fixed background behind the frame that fades from black/white to color on scroll -->
+  <div class="contact-bg-fixed"></div>
+
+  <nav class="minimal-nav">
+    <a href="./index.html" class="logo">Marc Beiersdorf</a>
+    <ul class="nav-links">
+      <li><a href="./work.html">Work</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="contact-container-full">
+    <!-- Full width Impressum image container (sticky) -->
+    <div class="contact-image-full">
+      <!-- First image: Impressum (visible on load) -->
+      <img src="./Impressum_Final.jpeg" class="img-impressum" alt="Marc Beiersdorf - Impressum">
+      
+      <!-- Second image: Contact (fades in on scroll) -->
+      <div class="img-contact" aria-label="Marc Beiersdorf - Contact" role="img"></div>
+      
+      <!-- Details overlaid on the image, revealed via scroll -->
+      <div class="contact-details-full">
+        <h2 class="contact-title">Marc Beiersdorf</h2>
+        <p class="contact-desc">
+          I am a solo cinematographer and video editor with a deep passion for crafting stories that actually move people. Based in the beautiful southern part of Germany, my work is focused on premium <a href="./index.html#events" class="category-link">event shootings</a>, high-energy <a href="./index.html#sports" class="category-link">sports campaigns</a>, <a href="./index.html#fashion" class="category-link">fashion narratives</a>, and <a href="./index.html#shorts" class="category-link">cinematic shorts</a>.<br><br>
+          I’ve had the privilege of bringing visions to life for incredible partners like Adidas, Mercedes, Kärcher, and Scalable, alongside legendary teams like 1.FC Köln.<br><br>
+          Whether we are building a brand narrative from the ground up or capturing the raw emotion of a live sports moment, I’m here to make it cinematic. If you are interested in collaborating, just send a message to the email below. I would love to hear from you. See you out there!
+        </p>
+
+        <!-- Looping Job Logos Slideshow -->
+        <div class="logo-ticker-container">
+          <div class="logo-ticker-track">
+            <img src="./Marken/adidas_final.png" alt="Adidas">
+            <img src="./Marken/fc_koeln_final.png" alt="FC Köln">
+            <img src="./Marken/kaercher_logo_final.png" alt="Kärcher">
+            <img src="./Marken/mercedes_benz_logo_final.png" alt="Mercedes Benz">
+            <img src="./Marken/olakala_final.png" alt="Olakala">
+            <img src="./Marken/scalable_final.png" alt="Scalable">
+            <!-- Duplicate for infinite seamless scroll -->
+            <img src="./Marken/adidas_final.png" alt="Adidas">
+            <img src="./Marken/fc_koeln_final.png" alt="FC Köln">
+            <img src="./Marken/kaercher_logo_final.png" alt="Kärcher">
+            <img src="./Marken/mercedes_benz_logo_final.png" alt="Mercedes Benz">
+            <img src="./Marken/olakala_final.png" alt="Olakala">
+            <img src="./Marken/scalable_final.png" alt="Scalable">
+          </div>
+        </div>
+
+        <a href="mailto:marcbeiersdorf.av@gmail.com" class="contact-link">marcbeiersdorf.av@gmail.com</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bgFixed = document.querySelector('.contact-bg-fixed');
+      const imgImpressum = document.querySelector('.contact-image-full img.img-impressum');
+      const imgContact = document.querySelector('.contact-image-full .img-contact');
+      const details = document.querySelector('.contact-details-full');
+      const logoTicker = document.querySelector('.logo-ticker-container');
+      const email = document.querySelector('.contact-link');
+
+      // Scroll handler for parallax translation, image filters, and text fade-ins
+      const handleScroll = () => {
+        const scrollY = window.scrollY;
+        const vh = window.innerHeight;
+
+        // Drive image parallax translations downward together
+        if (imgImpressum) {
+          imgImpressum.style.transform = `scale(1.35) translateY(${scrollY * 0.08}px)`;
+        }
+
+        // Calculate scroll progress for the crossfade animation
+        const startAnim = vh * 0.15;
+        const endAnim = vh * 0.75;
+        
+        let progress = (scrollY - startAnim) / (endAnim - startAnim);
+        if (progress < 0) progress = 0;
+        if (progress > 1) progress = 1;
+
+        // Dynamic grayscale saturation for body background behind the frame
+        if (bgFixed) {
+          const bgGrayscale = (1 - progress) * 100;
+          bgFixed.style.filter = `grayscale(${bgGrayscale}%)`;
+        }
+
+        // Image 1 (Impressum) fades out completely and goes black & white on scroll
+        if (imgImpressum) {
+          const grayscaleVal = progress * 100;
+          const opacityVal = 1 - progress;
+          imgImpressum.style.filter = `grayscale(${grayscaleVal}%)`;
+          imgImpressum.style.opacity = opacityVal;
+        }
+
+        // Image 2 (Contact) fades in on scroll
+        if (imgContact) {
+          imgContact.style.opacity = progress;
+        }
+
+        // Fade in details overlay when scrolled down far enough
+        if (details) {
+          const startFade = vh * 0.3;
+          const endFade = vh * 0.6;
+          
+          let opacity = (scrollY - startFade) / (endFade - startFade);
+          if (opacity < 0) opacity = 0;
+          if (opacity > 1) opacity = 1;
+          
+          details.style.opacity = opacity;
+          
+          if (opacity > 0.1) {
+            details.style.pointerEvents = 'auto';
+          } else {
+            details.style.pointerEvents = 'none';
+          }
+        }
+
+        // Drive logo ticker fade-in on scroll (after description appears)
+        if (logoTicker) {
+          const startTickerFade = vh * 0.6;
+          const endTickerFade = vh * 0.8;
+          
+          let tickerProgress = (scrollY - startTickerFade) / (endTickerFade - startTickerFade);
+          if (tickerProgress < 0) tickerProgress = 0;
+          if (tickerProgress > 1) tickerProgress = 1;
+          
+          logoTicker.style.opacity = tickerProgress;
+        }
+
+        // Drive email reveal on scroll (after logo ticker starts showing)
+        if (email) {
+          const startEmailFade = vh * 0.8;
+          const endEmailFade = vh * 1.0;
+          
+          let emailProgress = (scrollY - startEmailFade) / (endEmailFade - startEmailFade);
+          if (emailProgress < 0) emailProgress = 0;
+          if (emailProgress > 1) emailProgress = 1;
+          
+          email.style.opacity = emailProgress;
+          email.style.filter = `blur(${(1 - emailProgress) * 15}px)`;
+          
+          if (emailProgress > 0.1) {
+            email.style.pointerEvents = 'auto';
+          } else {
+            email.style.pointerEvents = 'none';
+          }
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      // Run once initially to apply start position
+      handleScroll();
+    });
+  </script>
+  <a href="./imprint.html" class="imprint-btn">Imprint</a>
+</body>
+</html>

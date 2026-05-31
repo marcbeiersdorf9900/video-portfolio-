@@ -1,0 +1,1193 @@
+:root {
+  --bg-color: #070707;
+  --text-color: #fbfbfb;
+  --transition: 0.6s cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.work-page-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./Background_1.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+body.home-page-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./Background_3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Global Typography Class for all markers */
+.nav-links a, .nav-btn, .logo, .hero-title, .item-meta-overlay h3, .masonry-overlay h3, .email-link, .social-links a {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Minimal Nav */
+nav.minimal-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  color: white; 
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a:hover, .nav-btn:hover {
+  opacity: 0.5;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+/* Scroll Sequence Hero Structure */
+.scroll-sequence {
+  position: relative;
+  height: 400vh;
+  transition: background-color 0.4s ease;
+}
+
+.sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.hero-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+.hero-title {
+  position: absolute;
+  left: 4rem;
+  top: 50%;
+  transform: translateY(-40%);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  letter-spacing: 0.05em;
+  color: #fff;
+  z-index: 10;
+  text-transform: uppercase;
+  pointer-events: none;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  filter: blur(15px);
+  transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+}
+
+.active-layer .hero-title {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(-50%);
+}
+
+/* Videos Stacked */
+.video-layer {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  border-radius: 12px;
+  overflow: hidden;
+  will-change: clip-path;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.video-layer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+}
+
+.vimeo-cover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw;
+  min-height: 100vh;
+  min-width: 177.77vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Initial Masks */
+#video-1 {
+  clip-path: inset(0 0 0 0);
+  z-index: 1;
+}
+
+#video-2 {
+  clip-path: inset(100% 0 0 0);
+  z-index: 2;
+}
+
+#video-3 {
+  clip-path: inset(100% 0 0 0);
+  z-index: 3;
+}
+
+/* Flex Accordion Portfolio */
+.gevirtz-grid {
+  padding: 4rem 1rem; 
+  position: relative;
+  transition: background-color 0.4s ease;
+  z-index: 10;
+}
+
+.flex-accordion-gallery {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  height: 70vh; /* Prominent horizontal sizing */
+}
+
+.portfolio-item {
+  position: relative;
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  transition: flex 0.6s cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+.portfolio-item:hover {
+  flex: 4;
+}
+
+.portfolio-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  filter: grayscale(100%) contrast(1.1); 
+  transform: scale(1.02);
+}
+
+.portfolio-item:hover .portfolio-video {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1);
+}
+
+.item-meta-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6); 
+  opacity: 1;
+  transition: background 0.4s ease;
+  z-index: 10;
+}
+
+.portfolio-item:hover .item-meta-overlay {
+  background: rgba(0, 0, 0, 0.2); 
+}
+
+/* Base styles for both titles (overlapping each other in center) */
+.item-meta-overlay h3 {
+  position: absolute;
+  color: #fff;
+  white-space: nowrap; 
+  transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
+}
+
+/* Vertical title (default visible, vanishes on hover) */
+.item-meta-overlay h3.meta-vertical {
+  transform: rotate(-90deg) scale(0.8);
+  opacity: 0.6;
+  filter: blur(0px);
+}
+
+.portfolio-item:hover .item-meta-overlay h3.meta-vertical {
+  opacity: 0;
+  filter: blur(10px);
+}
+
+/* Horizontal title (default hidden, appears on hover) */
+.item-meta-overlay h3.meta-horizontal {
+  transform: rotate(0deg) scale(1.2);
+  opacity: 0;
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.portfolio-item:hover .item-meta-overlay h3.meta-horizontal {
+  opacity: 1;
+  filter: blur(0px);
+  pointer-events: auto;
+}
+
+/* Minimal Footer */
+.minimal-footer {
+  padding: 3rem 4rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background: transparent;
+  /* Blur-in reveal animation */
+  opacity: 0;
+  filter: blur(15px);
+  transform: translateY(20px);
+  transition: opacity 1s ease, filter 1s ease, transform 1s ease;
+}
+
+.minimal-footer.footer-visible {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+}
+
+.email-link {
+  color: #fff;
+  transition: opacity 0.3s;
+}
+
+.email-link:hover {
+  opacity: 0.6;
+}
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.social-links a {
+  color: #fff;
+  transition: opacity 0.3s;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+/* Scattered Archive Portfolio */
+.archive-masonry-wrapper {
+  padding: 6rem 2rem 4rem; /* Top padding clears the fixed nav */
+  min-height: 100vh;
+}
+
+.work-grid {
+  column-count: 2;
+  column-gap: 4rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 4rem;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease;
+}
+
+.masonry-item:hover {
+  z-index: 10;
+}
+
+.masonry-video {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  filter: grayscale(100%) contrast(1.1); 
+  transform: scale(1.02);
+}
+
+.masonry-item:hover .masonry-video {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1);
+}
+
+.social-ad-item .vimeo-hover-poster,
+.social-ad-item .masonry-video {
+  transform: scale(1.35);
+}
+
+.social-ad-item:hover .masonry-video {
+  transform: scale(1.33);
+}
+
+.masonry-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0); 
+  transition: background 0.5s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.masonry-item:hover .masonry-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.masonry-overlay h3 {
+  /* Inherits small modern title properties from global */
+  text-align: center;
+  color: #fff;
+  /* Blur Animation Logic */
+  opacity: 0;
+  transform: scale(1.1); 
+  filter: blur(10px);
+  transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
+}
+
+.masonry-item:hover .masonry-overlay h3 {
+  opacity: 1;
+  filter: blur(0px);
+  transform: scale(1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .flex-accordion-gallery { flex-direction: column; height: 100vh; }
+  .email-link { font-size: 2rem; }
+  nav.minimal-nav { padding: 1.5rem; }
+  .masonry-grid { column-count: 1; }
+  .work-grid { column-count: 1; }
+}
+
+/* Lightbox Modal */
+.video-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.video-lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+  cursor: auto;
+}
+
+.lightbox-content {
+  position: relative;
+  width: 90%;
+  max-width: 1400px;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+  border-radius: 8px;
+  overflow: hidden;
+  transform: scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-lightbox.active .lightbox-content {
+  transform: scale(1);
+}
+
+.lightbox-content iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  cursor: auto;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  font-size: 2rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer !important;
+  font-family: 'Inter', sans-serif;
+  z-index: 100000;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+
+
+/* Collection Gallery Modal */
+.collection-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90000; /* Underneath the main video player */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* Juwelmania background */
+.juwelmania-collection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('./240914_juwelmania0034.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+/* Sports background */
+.sports-collection::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: url('./Background Sportspng.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+  transition: transform 0.3s ease-out;
+  transform: translate(var(--parallax-x, 0), var(--parallax-y, 0));
+}
+
+/* Fashion background */
+.fashion-collection::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: url('./Background_Fashion.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+  transition: transform 0.3s ease-out;
+  transform: translate(var(--parallax-x, 0), var(--parallax-y, 0));
+}
+
+/* Events background */
+.events-collection::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: url('./Background_4.jpg');
+  background-size: cover;
+  background-position: top center;
+  z-index: -2;
+  transition: transform 0.3s ease-out;
+  transform: translate(var(--parallax-x, 0), var(--parallax-y, 0));
+}
+
+/* Cinematic Shorts background */
+.shorts-collection::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: url('./Background_5.jpg');
+  background-size: cover;
+  background-position: center center;
+  z-index: -2;
+  transition: transform 0.3s ease-out;
+  transform: translate(var(--parallax-x, 0), var(--parallax-y, 0));
+}
+
+.juwelmania-collection::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 4.5s ease-out;
+  z-index: -1;
+}
+
+.juwelmania-collection.active::after {
+  opacity: 1;
+}
+
+.collection-lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.collection-header {
+  margin-bottom: 2rem;
+  width: 90%;
+  max-width: 1400px;
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.collection-header h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.collection-grid {
+  display: flex;
+  gap: 1rem;
+  width: 90%;
+  max-width: 1400px;
+  height: 60vh;
+  justify-content: center;
+}
+
+.collection-item {
+  flex: 1;
+  max-width: calc(60vh * (9/16));
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(100%) contrast(1.1);
+}
+
+.collection-item:hover {
+  transform: scale(1.05);
+  filter: grayscale(0%) contrast(1);
+  z-index: 2;
+}
+
+.collection-item iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Sports Collection Grid */
+.sports-grid {
+  display: flex;
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 1200px;
+  height: 70vh;
+  justify-content: center;
+}
+
+.sports-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.sports-col-right {
+  display: flex;
+  flex-direction: column;
+  width: calc(70vh * (9/16)); /* match height of the two stacked horizontals */
+}
+
+/* Events Collection Grid */
+.events-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+  width: 95%;
+  max-width: 1400px;
+  height: 70vh;
+}
+
+.event-item-top {
+  grid-column: 1 / 9; /* spans columns 1 to 8 (approx 66% width) */
+  grid-row: 1;
+}
+
+.event-item-bottom {
+  grid-column: 5 / 13; /* spans columns 5 to 12 (approx 66% width) */
+  grid-row: 2;
+}
+
+/* Cinematic Shorts Collection Grid */
+.shorts-grid {
+  display: flex;
+  gap: 3rem;
+  width: 90%;
+  max-width: 1200px;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.shorts-col-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically centers horizontal video */
+  flex: 1; /* auto-adapts width to fill remaining space */
+  height: 100%;
+}
+
+.shorts-col-left .sports-item {
+  flex: none;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* keep correct aspect ratio */
+}
+
+.shorts-col-right {
+  display: flex;
+  flex-direction: column;
+  width: calc(70vh * (9/16)); /* matches vertical aspect ratio perfectly */
+  height: 100%;
+}
+
+.shorts-col-right .sports-item {
+  flex: 1; /* stretches to full height of 70vh */
+  height: 100%;
+}
+
+.sports-item {
+  position: relative;
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.sports-item:hover {
+  transform: scale(1.02);
+  z-index: 2;
+}
+
+.sports-item iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw;
+  min-height: 100%;
+  min-width: 177.77%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  transition: filter 0.5s ease;
+}
+
+.sports-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  transition: filter 0.5s ease;
+}
+
+.sports-item:hover .sports-poster,
+.sports-item:hover iframe {
+  filter: brightness(0.6);
+}
+
+.sports-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.sports-overlay h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  transform: scale(1.1);
+  filter: blur(10px);
+  transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
+}
+
+.sports-item:hover .sports-overlay h3 {
+  opacity: 1;
+  filter: blur(0px);
+  transform: scale(1);
+}
+
+/* --- Contact Page Layout & Theme --- */
+body.contact-page-bg {
+  background-color: #070707;
+  color: #000000;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+.contact-bg-fixed {
+  position: fixed;
+  inset: 0;
+  background-image: url('./Contact_Background.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  will-change: filter;
+  filter: grayscale(100%); /* Start as black and white */
+}
+
+body.contact-page-bg .minimal-nav {
+  color: #ffffff;
+}
+
+body.contact-page-bg .logo,
+body.contact-page-bg .nav-links a {
+  color: #ffffff !important;
+}
+
+body.contact-page-bg .nav-links a:hover {
+  opacity: 0.6;
+}
+
+.contact-container-full {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 210vh;
+  padding: 8rem 2rem 4rem;
+  background: transparent;
+  position: relative;
+}
+
+.contact-image-full {
+  position: sticky;
+  top: 8rem;
+  width: 100%;
+  max-width: 1200px;
+  height: 65vh;
+  min-height: 480px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+}
+
+.contact-image-full > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 1;
+  transform: scale(1.35);
+  transform-origin: center center;
+  will-change: transform, filter, opacity;
+}
+
+.contact-image-full .img-contact {
+  position: absolute;
+  inset: 0;
+  background-image: url('./Contact_Background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.contact-details-full {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 3rem;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  z-index: 10;
+  text-align: center;
+}
+
+.contact-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.contact-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.category-link {
+  display: inline-block;
+  vertical-align: baseline;
+  color: #ffffff;
+  text-decoration: none;
+  font-style: italic;
+  font-weight: 400;
+  padding: 0 4px;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.2s ease;
+  transform-origin: center center;
+  cursor: pointer;
+}
+
+.category-link:hover {
+  transform: scale(1.05);
+  color: #cccccc;
+}
+
+.contact-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #ffffff;
+  align-self: center;
+  opacity: 0;
+  filter: blur(15px);
+  transition: transform 0.3s ease, color 0.3s ease;
+  will-change: opacity, filter;
+}
+
+.contact-link:hover {
+  transform: scale(1.05);
+  color: #cccccc;
+}
+
+.imprint-btn {
+  position: fixed;
+  right: 3rem;
+  bottom: 2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+}
+
+.imprint-btn:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* --- Imprint Page Layout & Theme --- */
+body.imprint-page-bg {
+  background-image: url('./Contact.png');
+  background-size: cover;
+  background-position: center bottom; /* Shows the lower half of Contact.png */
+  background-attachment: fixed;
+  background-color: #070707;
+  color: #ffffff;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+body.imprint-page-bg .minimal-nav {
+  color: #ffffff;
+}
+
+body.imprint-page-bg .logo,
+body.imprint-page-bg .nav-links a {
+  color: #ffffff !important;
+}
+
+body.imprint-page-bg .nav-links a:hover {
+  opacity: 0.6;
+}
+
+.imprint-container {
+  max-width: 800px;
+  margin: 8rem auto 6rem;
+  padding: 3.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+
+.imprint-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 0.8rem;
+  color: #ffffff;
+}
+
+.imprint-section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+.imprint-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #dddddd;
+  margin-bottom: 1rem;
+}
+
+.imprint-text strong {
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.back-btn {
+  position: absolute;
+  top: 8rem;
+  left: 4rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  color: #ffffff;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.back-btn:hover {
+  opacity: 1;
+  transform: translateX(-5px);
+}
+
+/* Responsive adjustment for Imprint page */
+@media (max-width: 768px) {
+  .imprint-container {
+    margin: 6rem 1.5rem 4rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .imprint-title {
+    font-size: 1.4rem;
+  }
+  
+  .back-btn {
+    position: static;
+    display: inline-block;
+    margin: 6rem 0 0 1.5rem;
+  }
+}
+
+/* Job Logos Ticker/Marquee */
+.logo-ticker-container {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  opacity: 0; /* Driven by scroll handler */
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* Mask gradient for smooth fading at the left and right edges */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.logo-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+  width: max-content;
+  white-space: nowrap;
+  animation: logo-scroll 65s linear infinite;
+  flex-shrink: 0;
+}
+
+.logo-ticker-track img {
+  height: calc(var(--logo-base-height, 32px) * var(--logo-scale, 1));
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+  object-fit: contain;
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+}
+
+.logo-ticker-track img:hover {
+  opacity: 1;
+}
+
+/* Individual scaling factors to visually balance heights due to PNG canvas margins */
+.logo-ticker-track img[alt="Adidas"] {
+  --logo-scale: 1.35;
+}
+.logo-ticker-track img[alt="Mercedes Benz"] {
+  --logo-scale: 1.6;
+}
+.logo-ticker-track img[alt="FC Köln"] {
+  --logo-scale: 1.25;
+}
+.logo-ticker-track img[alt="Kärcher"] {
+  --logo-scale: 0.85;
+}
+.logo-ticker-track img[alt="Olakala"] {
+  --logo-scale: 0.85;
+}
+.logo-ticker-track img[alt="Scalable"] {
+  --logo-scale: 0.95;
+}
+
+@keyframes logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .contact-container-full {
+    height: 180vh;
+    padding: 6rem 1.5rem 3rem;
+  }
+  
+  .contact-image-full {
+    height: 70vh;
+    min-height: 480px;
+    top: 6rem;
+  }
+  
+  .contact-details-full {
+    padding: 1.5rem 1rem;
+  }
+  
+  .contact-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .contact-desc {
+    font-size: 0.78rem;
+    margin-bottom: 1rem;
+    line-height: 1.45;
+  }
+
+  .logo-ticker-container {
+    margin-bottom: 1.2rem;
+  }
+
+  .logo-ticker-track {
+    gap: 3rem;
+    --logo-base-height: 24px;
+  }
+
+  .imprint-btn {
+    right: 1.5rem;
+    bottom: 1.5rem;
+  }
+}
+
+
