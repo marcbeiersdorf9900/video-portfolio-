@@ -146,9 +146,6 @@ nav.minimal-nav {
   will-change: clip-path;
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-  -webkit-backface-visibility: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
 }
 
 .video-layer video {
@@ -156,7 +153,6 @@ nav.minimal-nav {
   height: 100%;
   object-fit: cover;
   transform: scale(1.05);
-  border-radius: inherit;
 }
 
 .vimeo-cover {
@@ -170,7 +166,6 @@ nav.minimal-nav {
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 1;
-  border-radius: inherit;
 }
 
 /* Initial Masks */
@@ -212,9 +207,6 @@ nav.minimal-nav {
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   transition: flex 0.6s cubic-bezier(0.8, 0, 0.2, 1);
-  -webkit-backface-visibility: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
 }
 
 .portfolio-item:hover {
@@ -225,11 +217,9 @@ nav.minimal-nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: transparent;
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
   filter: grayscale(100%) contrast(1.1); 
   transform: scale(1.02);
-  border-radius: inherit;
 }
 
 .portfolio-item:hover .portfolio-video {
@@ -346,10 +336,6 @@ nav.minimal-nav {
 }
 
 .masonry-item {
-  display: inline-block;
-  width: 100%;
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
   break-inside: avoid;
   margin-bottom: 4rem;
   position: relative;
@@ -358,9 +344,6 @@ nav.minimal-nav {
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   transition: transform 0.4s ease;
-  -webkit-backface-visibility: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
 }
 
 .masonry-item:hover {
@@ -369,7 +352,7 @@ nav.minimal-nav {
 
 .masonry-video {
   width: 100%;
-  border-radius: inherit;
+  border-radius: 12px;
   display: block;
   object-fit: cover;
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
@@ -736,9 +719,6 @@ nav.minimal-nav {
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   cursor: pointer;
   transition: transform 0.3s ease;
-  -webkit-backface-visibility: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
 }
 
 .sports-item:hover {
@@ -758,7 +738,6 @@ nav.minimal-nav {
   pointer-events: none;
   z-index: 1;
   transition: filter 0.5s ease;
-  border-radius: inherit;
 }
 
 .sports-poster {
@@ -767,7 +746,6 @@ nav.minimal-nav {
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: inherit;
   object-fit: cover;
   z-index: 2;
   transition: filter 0.5s ease;
