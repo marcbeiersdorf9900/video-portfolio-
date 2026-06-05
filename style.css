@@ -217,6 +217,7 @@ nav.minimal-nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background: transparent;
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
   filter: grayscale(100%) contrast(1.1); 
   transform: scale(1.02);

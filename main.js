@@ -38,57 +38,69 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Sequential Sticky Scroll for Hero Videos ---
   const video2 = document.getElementById('video-2');
   const video3 = document.getElementById('video-3');
+  const heroIframes = [];
 
-  window.addEventListener('scroll', () => {
+  const handleHeroScroll = () => {
     const scrollY = window.scrollY;
     const vh = window.innerHeight;
-    
-    // We expanded section to 400vh. Max scroll inside this sticky container is 300vh.
-    
+
     // Calculate progression for video 2 (between 50vh and 150vh)
-    let p2 = (scrollY - (vh * 0.5)) / vh; 
+    let p2 = (scrollY - (vh * 0.5)) / vh;
     if (p2 < 0) p2 = 0;
     if (p2 > 1) p2 = 1;
-    
+
     const inset2 = 100 - (p2 * 100);
-    if(video2) {
+    if (video2) {
       video2.style.clipPath = `inset(${inset2}% 0 0 0)`;
       if (p2 > 0.3) video2.classList.add('active-layer'); else video2.classList.remove('active-layer');
     }
 
+    // Lazy load Video 2 if user scrolls near it
+    const hero2 = heroIframes.find(h => h.iframe.id === 'vimeo-player-2');
+    if (hero2 && !hero2.loaded && p2 > 0.05) {
+      hero2.iframe.src = hero2.iframe.getAttribute('data-original-src');
+      hero2.loaded = true;
+      hero2.fallbackTimer = setTimeout(hero2.hidePoster, 6000);
+    }
+
     // Calculate progression for video 3 (between 150vh and 250vh)
-    let p3 = (scrollY - (vh * 1.5)) / vh; 
+    let p3 = (scrollY - (vh * 1.5)) / vh;
     if (p3 < 0) p3 = 0;
     if (p3 > 1) p3 = 1;
 
-    // From scrollY = 250vh to 300vh, p3 is 1 (meaning fully revealed). 
-    // This correctly acts as the holding "lock".
     const inset3 = 100 - (p3 * 100);
-    if(video3) {
+    if (video3) {
       video3.style.clipPath = `inset(${inset3}% 0 0 0)`;
       if (p3 > 0.3) video3.classList.add('active-layer'); else video3.classList.remove('active-layer');
     }
-  });
+
+    // Lazy load Video 3 if user scrolls near it
+    const hero3 = heroIframes.find(h => h.iframe.id === 'vimeo-player-3');
+    if (hero3 && !hero3.loaded && p3 > 0.05) {
+      hero3.iframe.src = hero3.iframe.getAttribute('data-original-src');
+      hero3.loaded = true;
+      hero3.fallbackTimer = setTimeout(hero3.hidePoster, 6000);
+    }
+  };
+
+  window.addEventListener('scroll', handleHeroScroll, { passive: true });
 
   // --- Native Hero Video Poster & Unload Logic (No player.js) ---
-  const heroIframes = [];
-  
   const setupHeroVideo = (iframeId, posterId) => {
     const iframe = document.getElementById(iframeId);
     const poster = document.getElementById(posterId);
-    
+
     if (iframe && poster) {
-      // Ensure the URL has &api=1
-      let src = iframe.src;
-      if (!src.includes('api=1')) {
+      let src = iframe.getAttribute('data-src') || iframe.src;
+      if (src && !src.includes('api=1')) {
         src += '&api=1';
-        iframe.src = src;
       }
 
       const heroObj = {
         iframe,
         poster,
         fallbackTimer: null,
+        loaded: false,
         hidePoster: () => {
           if (heroObj.fallbackTimer) {
             clearTimeout(heroObj.fallbackTimer);
@@ -101,12 +113,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
 
-      // Save the original src so we can restore it later when unloading
       iframe.setAttribute('data-original-src', src);
-      
-      // Set a fallback timer of 6 seconds just in case messages fail
-      heroObj.fallbackTimer = setTimeout(heroObj.hidePoster, 6000);
-      
+
+      // Load Video 1 immediately on startup
+      if (iframeId === 'vimeo-player-1') {
+        iframe.src = src;
+        heroObj.loaded = true;
+        heroObj.fallbackTimer = setTimeout(heroObj.hidePoster, 6000);
+      }
+
       heroIframes.push(heroObj);
     }
   };
@@ -114,6 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setupHeroVideo('vimeo-player-1', 'vimeo-poster-1');
   setupHeroVideo('vimeo-player-2', 'vimeo-poster-2');
   setupHeroVideo('vimeo-player-3', 'vimeo-poster-3');
+
+  // Trigger initial scroll calculation to handle any pre-scrolled page loads
+  handleHeroScroll();
 
   // Listen to message events from Vimeo iframes to hide poster only when play starts
   window.addEventListener('message', (event) => {
@@ -142,40 +160,41 @@ document.addEventListener('DOMContentLoaded', () => {
   // Helper to visually pause and unload hero videos
   const unloadHeroVideos = () => {
     heroIframes.forEach(hero => {
-      // Clear any fallback timers
       if (hero.fallbackTimer) {
         clearTimeout(hero.fallbackTimer);
         hero.fallbackTimer = null;
       }
 
-      // Show poster smoothly
       hero.poster.style.display = 'block';
       setTimeout(() => { hero.poster.style.opacity = '1'; }, 50);
-      
-      // Remove src to violently kill the video decoder process and free memory
+
       hero.iframe.src = '';
+      hero.loaded = false; // Reset load state
     });
   };
 
   // Helper to reload hero videos
   const reloadHeroVideos = () => {
     heroIframes.forEach(hero => {
-      // Clear any existing fallback timers
       if (hero.fallbackTimer) {
         clearTimeout(hero.fallbackTimer);
         hero.fallbackTimer = null;
       }
 
-      // Ensure poster is shown before reload
       hero.poster.style.display = 'block';
       hero.poster.style.opacity = '1';
 
-      // Restore src to trigger playback
-      hero.iframe.src = hero.iframe.getAttribute('data-original-src');
-      
-      // Start a new fallback timer
-      hero.fallbackTimer = setTimeout(hero.hidePoster, 6000);
+      if (hero.iframe.id === 'vimeo-player-1') {
+        hero.iframe.src = hero.iframe.getAttribute('data-original-src');
+        hero.loaded = true;
+        hero.fallbackTimer = setTimeout(hero.hidePoster, 6000);
+      } else {
+        hero.iframe.src = '';
+        hero.loaded = false;
+      }
     });
+    // Trigger scroll check to re-load active below-the-fold videos if we are scrolled down
+    handleHeroScroll();
   };
 
 
