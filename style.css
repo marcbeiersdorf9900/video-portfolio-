@@ -20,19 +20,37 @@ body {
 }
 
 body.work-page-bg {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./Background_1.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-color: var(--bg-color);
   color: #fff;
 }
 
 body.home-page-bg {
+  background-color: var(--bg-color);
+  color: #fff;
+}
+
+.home-bg-fixed {
+  position: fixed;
+  inset: 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./Background_3.jpg');
   background-size: cover;
+  background-position: center calc(50% - var(--bg-offset-y, 0px));
+  z-index: -2;
+  pointer-events: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.work-bg-fixed {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./Background_1.png');
+  background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  color: #fff;
+  z-index: -2;
+  pointer-events: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 html {
@@ -207,19 +225,50 @@ nav.minimal-nav {
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   transition: flex 0.6s cubic-bezier(0.8, 0, 0.2, 1);
+  /* Safari overflow border-radius clipping bugfix */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .portfolio-item:hover {
   flex: 4;
 }
 
-.portfolio-video {
+.portfolio-poster {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 2;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease, opacity 0.5s ease;
+  filter: grayscale(100%) contrast(1.1); 
+  transform: scale(1.02);
+  pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, filter, opacity;
+}
+
+.portfolio-item:hover .portfolio-poster {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1);
+}
+
+.portfolio-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
   filter: grayscale(100%) contrast(1.1); 
   transform: scale(1.02);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, filter;
 }
 
 .portfolio-item:hover .portfolio-video {
@@ -969,14 +1018,22 @@ body.contact-page-bg .nav-links a:hover {
 
 /* --- Imprint Page Layout & Theme --- */
 body.imprint-page-bg {
-  background-image: url('./Contact.png');
-  background-size: cover;
-  background-position: center bottom; /* Shows the lower half of Contact.png */
-  background-attachment: fixed;
   background-color: #070707;
   color: #ffffff;
   overflow-y: auto;
   min-height: 100vh;
+}
+
+.imprint-bg-fixed {
+  position: fixed;
+  inset: 0;
+  background-image: url('./Contact.png');
+  background-size: cover;
+  background-position: center bottom; /* Shows the lower half of Contact.png */
+  z-index: -2;
+  pointer-events: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 body.imprint-page-bg .minimal-nav {

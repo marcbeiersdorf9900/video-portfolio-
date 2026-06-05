@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Only start parallax after the hero section ends
       if (scrollY > heroEnd) {
         const delta = (scrollY - heroEnd) * 0.15;
-        document.body.style.backgroundPositionY = `calc(50% - ${delta}px)`;
+        document.body.style.setProperty('--bg-offset-y', `${delta}px`);
       } else {
-        document.body.style.backgroundPositionY = '50%';
+        document.body.style.setProperty('--bg-offset-y', '0px');
       }
     }
   }, { passive: true });
@@ -637,12 +637,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       } else {
         video.pause();
+        const html5Poster = item.querySelector('.portfolio-poster');
+        
         item.addEventListener('mouseenter', () => {
           let playPromise = video.play();
-          if (playPromise !== undefined) playPromise.catch(() => {});
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              if (html5Poster) html5Poster.style.opacity = '0';
+            }).catch(() => {});
+          } else {
+            if (html5Poster) html5Poster.style.opacity = '0';
+          }
         });
+        
         item.addEventListener('mouseleave', () => {
           video.pause();
+          if (html5Poster) html5Poster.style.opacity = '1';
         });
       }
     }
